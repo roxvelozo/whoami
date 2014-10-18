@@ -20,7 +20,6 @@ $(function() {
 	});
 	$('#position').bind('didShow', function(){
 
-	 	alert('position showed!');
 
 	});
 
