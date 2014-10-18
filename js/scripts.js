@@ -29,7 +29,7 @@ $(function() {
 
 	});
 
-	$("#capture .continue-btn").on('click', function() {
+	/*$("#capture .continue-btn").on('click', function() {
 
 		// setup position screen
 		$("#position .capturedImage img").attr('src',
@@ -38,11 +38,7 @@ $(function() {
 
 		game.showPage('position');
 
-	});
-
-	$('.capturedImage img').on('click',function() {
-		alert('clicked');
-	})
+	});*/
 
 
 
@@ -80,6 +76,7 @@ $('#canvas').replaceWith('<canvas width="'+ canvas_width +'" height="'+ canvas_h
 		$("#capture .controls").show();
 
 		$("#captureBtn").hide();
+		$('.overlay').show();
 	}
 
 
