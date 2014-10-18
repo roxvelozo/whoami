@@ -30,31 +30,20 @@ $(function() {
 	});
 	$('#flip').bind('didShow', function(){
 
-		// Start timer
-
-		// Update countdown label (div)
-
-		// When timer finishes, trigger game.showPage('game');
+		startCountdown(5,'game');
 
 	});
 	$('#game').bind('didShow', function(){
 
-		// copy image source
-		// < Through jquery-copy > [comes in with new position AND source?]
 		$("#game .capturedImage").html(''); // Empty it out
 		var originalImage = $("#capture .capturedImage img").clone();
 		originalImage.appendTo($("#game .capturedImage"));
 
 		// Choose random mask.
 
-		// Display Game timer <div>
-
-		// Display Controls <div>
+		startCountdown(30,'score');
 
 	});
-
-
-
 
 	/****
 	***** General Setup
@@ -65,7 +54,14 @@ $(function() {
 	});
 
 	$("#capture .start-btn").on('click', function() {
-		game.showPage('game');
+		game.showPage('flip');
+	});
+
+	$("#game .button").on('click', function() {
+		if ($(this).hasClass('correct-btn')) {
+			//add 1 to score
+		}
+		// show next random mask
 	});
 
 	var captureBtn = document.getElementById("captureBtn")
@@ -93,7 +89,17 @@ $(function() {
 		$('.overlay').show();
 	}
 
+	function startCountdown(time, redirect) {
+		$('.show-time').html(time);
+		var interval = setInterval(function() {
+			$('.show-time').html(--time);
 
+			if(time == 0) {
+				clearInterval(interval);
+				game.showPage(redirect);
+			}
+		},1000);
+	}
 
 
 
