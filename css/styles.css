@@ -67,11 +67,14 @@ h1 {
 #capture .controls .continue-btn {
 
 }
-
-
-		<div class="controls">
-
-			<div class="retake-btn">Retake</div>
-			<div class="continue-btn">Continue</div>
-
-		</div>
+#position .overlay {
+	height: 100%;
+	width: 100%;
+	pointer-events:none;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+#position .overlay img {
+	width: 100%;
+}
