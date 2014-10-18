@@ -47,13 +47,16 @@ body {
 .button {
 	background: #418221;
 	border-radius: 5px;
-	box-shadow: -3px 3px 0 #4b8a2b;
+	box-shadow: -3px 3px 0 #6ddb0c;
 	display: block;
 	font-size: 2em;
 	padding: 20px;
 	text-align: center;
+	width: 30%;
 }
 .controls .retake-btn {
+	background: #822121;
+	box-shadow: -3px 3px #db0c0c;
 	float: left;
 }
 .controls .start-btn {
