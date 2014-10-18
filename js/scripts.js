@@ -1,5 +1,50 @@
 $(function() {
 
+	var game = {
+		showPage: function(pageToShow) {
+			// First, lets hide all pages (except pageToShow)
+			$(".page").not("#" + pageToShow).hide();
+			// Show/Ensure pageToShow is visible
+			$("#" + pageToShow).show();
+			$("#" + pageToShow).trigger('didShow');
+		}
+	}
+
+
+
+	/** Page Specific Logic **/
+	$('#capture').bind('didShow', function(){
+
+	 	$("#captureBtn").trigger('click');
+
+	});
+	$('#position').bind('didShow', function(){
+
+	 	alert('position showed!');
+
+	});
+
+
+	$("#capture .retake-btn").on('click', function() {
+		$("#captureBtn").trigger('click');
+
+	});
+
+	$("#capture .continue-btn").on('click', function() {
+
+		// setup position screen
+		$("#position .capturedImage img").attr('src',
+			$("#capture .capturedImage img").attr('src')
+		);
+
+		game.showPage('position');
+
+	});
+
+
+
+
+
 /*var canvas_width = $('#canvas').width();
 var canvas_height = $('#canvas').height();
 
@@ -8,70 +53,43 @@ $('#canvas').replaceWith('<canvas width="'+ canvas_width +'" height="'+ canvas_h
 
 
 
+	/** General  Setup **/
 	var captureBtn = document.getElementById("captureBtn")
-
-	var lastCapture;
-
-	$("#request #capture").click(function() {
-		$("#captureBtn").trigger('click');
-	});
 
  	captureBtn.addEventListener("change", function (evt) {
 		var capture = this.files[0];
-		var reader;
 
-		//var preLoad = document.createElement("img");
+		//window/picture picURL
+		var windowURL = window.URL || window.webkitURL;
+		var picURL = windowURL.createObjectURL(capture);
 
-		if (!!capture.type.match(/image.*/)) {
-
-			reader = new FileReader();
-
-			/*
-			reader.onloadend = function (e) {
-				//lastCapture = e.target.result;
-
-				preLoad.onload = function() {
-					var canvas = document.createElement("canvas");
-					var MAX_WIDTH = 800;
-					var MAX_HEIGHT = 600;
-					var width = preLoad.width * 0.25;
-					var height = preLoad.height * 0.25;
-
-
-					canvas.width = width;
-					canvas.height = height;
-					var ctx = canvas.getContext("2d");
-					ctx.drawImage(preLoad, 0, 0, width, height);
-
-					lastCapture = canvas.toDataURL();
-
-					submitRequestImage(lastCapture);
-				}
-
-				preLoad.src = e.target.result
-
-			}*/
-
-
-			reader.onloadend = function(e)
-			{
-				lastCapture = e.target.result;
-
-			    showCapture(lastCapture);
-			}
-
-
-			reader.readAsDataURL(capture);
-		}
+		//load photo into image object.
+		showCapturePreview(picURL);
 
 	}, false);
 
 
-	function showCapture(source) {
-		$("#previewImg").attr('src', source).css({
-			'display': 'inline-block',
-			'width': '50%'
+	function showCapturePreview(source) {
+		$(".capturedImage img").attr('src', source).css({
 		});
+
+		// Do other logic
+		$("#capture .controls").show();
+
+		$("#captureBtn").hide();
 	}
+
+
+
+
+
+
+
+
+
+	// INITIALIZATION!!
+	// Lets start inside of our capture screen.
+	game.showPage('capture');
+
 
 });

@@ -4,16 +4,72 @@
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1">
 <title>What Am I?</title>
-
+	<link href='css/styles.css' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
 
+<!-- SPLASH SCREEN -->
+<div class="page" id="splash">
+
+</div>
+
+<!--- CAPTURE SCREEN -->
+<div class="page" id="capture">
 
 
-<div id="capture">Capture Image</div>
-<input type="file" accept="image/*" capture id="captureBtn">
-<img id="previewImg" />
+	<div class="capturedImage">
+		<img />
+	</div>
+
+		<input type="file" accept="image/*" capture="camera" id="captureBtn">
+
+
+	<div class="controls">
+
+
+		<div class="retake-btn">Retake</div>
+		<div class="continue-btn">Continue</div>
+
+	</div>
+
+
+
+</div>
+
+<!--- POSITION SCREEN -->
+<div class="page" id="position">
+
+	<div class="capturedImage">
+		<img />
+	</div>
+
+	<div class="overlay">
+
+	<div class="controls">
+
+		<input type="file" accept="image/*" capture="camera" id="captureBtn">
+
+		<div class="retake-btn">Retake</div>
+		<div class="continue-btn">Continue</div>
+
+	</div>
+
+</div>
+
+<!--- FLIP SCREEN -->
+<div class="page" id="flip">
+
+</div>
+
+
+
+
+
+
+
+
+
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/scripts.js"></script>
