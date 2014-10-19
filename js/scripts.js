@@ -16,6 +16,8 @@ $(function() {
 		}
 	}
 
+	var score;
+
 
 
 	/****
@@ -30,7 +32,7 @@ $(function() {
 	});
 	$('#flip').bind('didShow', function(){
 
-		startCountdown(5,'game');
+		startCountdown(3,'game');
 
 	});
 	$('#game').bind('didShow', function(){
@@ -38,6 +40,8 @@ $(function() {
 		$("#game .capturedImage").html(''); // Empty it out
 		var originalImage = $("#capture .capturedImage img").clone();
 		originalImage.appendTo($("#game .capturedImage"));
+
+		score = 0;
 
 		// Choose random mask.
 
@@ -49,6 +53,10 @@ $(function() {
 	***** General Setup
 	*****/
 
+	$("#splash .play-btn").on('click', function() {
+		game.showPage('capture');
+	});
+
 	$("#capture .retake-btn").on('click', function() {
 		$("#captureBtn").trigger('click');
 	});
@@ -59,9 +67,20 @@ $(function() {
 
 	$("#game .button").on('click', function() {
 		if ($(this).hasClass('correct-btn')) {
-			//add 1 to score
+			score ++;
+			$('#score .score span').html(score);
 		}
 		// show next random mask
+	});
+
+	$("#score .new-btn").on('click', function() {
+		game.showPage('capture');
+		score = 0;
+	});
+
+	$("#score .again-btn").on('click', function() {
+		game.showPage('flip');
+		score = 0;
 	});
 
 	var captureBtn = document.getElementById("captureBtn")
@@ -86,7 +105,6 @@ $(function() {
 		$("#capture .controls").show();
 
 		$("#captureBtn").hide();
-		$('.overlay').show();
 	}
 
 	function startCountdown(time, redirect) {
@@ -106,8 +124,8 @@ $(function() {
 
 
 	// INITIALIZATION!!
-	// Lets start inside of our capture screen.
-	game.showPage('capture');
+	// Lets start inside of our splash screen.
+	game.showPage('splash');
 
 
 

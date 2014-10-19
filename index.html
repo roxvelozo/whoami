@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,400|Poiret+One' rel='stylesheet' type='text/css'>
 <title>What Am I?</title>
 	<link href='css/styles.css' rel='stylesheet' type='text/css'>
 </head>
@@ -11,6 +12,17 @@
 
 <!-- SPLASH SCREEN -->
 <div class="page" id="splash">
+
+	<h1>What am I?</h1>
+	<ul>
+		<li class="step-one">1)</li>
+		<li class="step-two">2)</li>
+		<li class="step-three">3)</li>
+		<li class="step-four">4)</li>
+	</ul>
+
+	<span class="play-btn button">Start Playing!</span>
+
 
 </div>
 
@@ -22,7 +34,7 @@
 		<img />
 	</div>
 
-		<input type="file" accept="image/*" capture="camera" id="captureBtn">
+	<input type="file" accept="image/*" capture="camera" id="captureBtn">
 
 	<div class="overlay"><img src="images/face_overlay.png" /></div>
 
@@ -38,7 +50,8 @@
 <!--- FLIP SCREEN -->
 <div class="page" id="flip">
 
-	<h2>Flip your device</h2>
+	<h2>Flip your device over</h2>
+	<h3>No peeking!</h3>
 
 	<div class="countdown">:0<span class="show-time"></span></div>
 
@@ -55,7 +68,7 @@
 
 	<div class="mask"><img /></div>
 
-	<div class="countdown">:<span class="show-time"></span></div>
+	<div class="countdown"><span class="show-time"></span></div>
 
 	<div class="controls">
 		<span class="pass-btn button">Pass</span>
@@ -68,8 +81,10 @@
 <div class="page" id="score">
 
 	<!-- Display score -->
+	<h2 class="score">Score: <span>0</span></h2>
 
-	<!-- Add buttons for New photo or try again -->
+	<span class="new-btn button">New Photo</span>
+	<span class="again-btn button">Try Again</span>
 
 </div>
 

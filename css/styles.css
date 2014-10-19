@@ -20,16 +20,66 @@ ol, ul {
 /* end reset */
 
 body {
-	font-family: 'open sans', sans-serif;
+	font-family: 'poiret one', sans-serif;
 }
 .page {
+	background: #22c0a8;
 	display: none;
 	width: 100%;
 	height: 100%;
 	position: absolute;
 }
-#capture {
-	background: #666;
+#splash h1 {
+	color: #fff;
+	font-size: 2.75em;
+	font-family: 'Poiret One', sans-serif;
+	font-weight: bold;
+	margin: 30px 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+#splash ul {
+	margin: 10px 3%;
+	overflow: auto;
+}
+#splash li {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	border-bottom: 1px solid #c0d7f0;
+	color: #fff;
+	float: left;
+	height: 90px;
+	padding: 15px 5px;
+	width: 50%;
+}
+#splash li.step-one {
+	background: transparent url('../images/photo.png') no-repeat 50% 10px;
+}
+#splash li.step-two {
+	background: transparent url('../images/flip.png') no-repeat 50% 10px;
+}
+#splash li.step-three {
+	background: transparent url('../images/guess.png') no-repeat 50% 0px;
+}
+#splash li.step-four {
+	background: transparent url('../images/party.png') no-repeat 50% 10px;
+}
+#splash .button, #score .button {
+	background: #a30fc3;
+	box-shadow: -3px 3px 0 #f9f234;
+	margin: 20px auto;
+	padding: 20px 5px;
+	width: 94%;
+}
+#splash li:nth-child(odd) {
+	border-right: 1px solid #c0d7f0;
+}
+#captureBtn {
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 .capturedImage {
 	width: 100%;
@@ -41,25 +91,27 @@ body {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	color: #fff;
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	padding: 0 3% 30px;
+	padding: 0 3% 10px;
 	width: 100%;
 }
-#capture .controls {
-	display: none;
-}
 .button {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	background: #418221;
 	border-radius: 5px;
 	box-shadow: -3px 3px 0 #6ddb0c;
+	color: #fff;
+	cursor: pointer;
 	display: block;
 	font-size: 2em;
-	padding: 20px;
+	letter-spacing: .05em;
+	padding: 10px 10px;
 	text-align: center;
-	width: 30%;
+	width: 45%;
 }
 .controls .retake-btn, .controls .pass-btn {
 	background: #822121;
@@ -70,42 +122,84 @@ body {
 	float: right;
 }
 .overlay {
-	height: 90%;
 	width: 100%;
 	pointer-events:none;
 	position: absolute;
 	left: 0;
-	top: 10%;
-	display: none;
+	top: 15%;
 	text-align: center;
 }
 .overlay img {
 	width: 70%;
 }
-#flip {
-	background: #822121;
-}
-h2 {
+h2, h3 {
 	color: #fff;
-	font-size: 2em;
+	font-size: 2.5em;
 	padding: 10% 3% 5%;
 	text-align: center;
 }
+h3 {
+	font-size: 1.5em;
+}
 #flip .countdown {
 	color: #fff;
-	font-size: 3em;
+	font-size: 5em;
 	padding: 20px;
 	text-align: center;
 }
 #flip .countdown span {
 	font-style: 1.25em;
+
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+}
+
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+}
+
+@keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+}
+#game .countdown {
+	color: #fff;
+	font-family: 'Open Sans';
+	font-size: 2.25em;
+	position: absolute;
+	padding: 5px;
+	right: 5px;
+	top: 5px;
+	text-shadow: 3px 3px 0 #a30fc3;
 }
 #game {
-	background: #418221;
+	background: #000;
 }
-
-
-
+.score span {
+	color: #a30fc3;
+	font-size: 1.5em;
+}
 
 
 
