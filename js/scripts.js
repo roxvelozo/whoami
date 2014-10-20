@@ -1,9 +1,12 @@
 $(function() {
 
-	var marks = [
-		'',
-		'',
-		''
+	var masks = [
+		'../images/disguises/batman.png',
+		'../images/disguises/clown.png',
+		'../images/disguises/monkey.png',
+		'../images/disguises/toast.png',
+		'../images/disguises/ninja.png',
+		'../images/disguises/unicorn.png'
 	]
 
 	var game = {
@@ -16,7 +19,10 @@ $(function() {
 		}
 	}
 
-	var score;
+	var score,
+	currentMask,
+	currentMasks,
+	interval;
 
 
 
@@ -37,13 +43,14 @@ $(function() {
 	});
 	$('#game').bind('didShow', function(){
 
+		currentMasks = masks.slice(0);
+		randomMask();
+
 		$("#game .capturedImage").html(''); // Empty it out
 		var originalImage = $("#capture .capturedImage img").clone();
 		originalImage.appendTo($("#game .capturedImage"));
 
 		score = 0;
-
-		// Choose random mask.
 
 		startCountdown(30,'score');
 
@@ -70,7 +77,8 @@ $(function() {
 			score ++;
 			$('#score .score span').html(score);
 		}
-		// show next random mask
+		randomMask();
+
 	});
 
 	$("#score .new-btn").on('click', function() {
@@ -96,6 +104,21 @@ $(function() {
 
 	}, false);
 
+	function randomMask() {
+		currentMask = currentMasks[Math.floor(Math.random()*currentMasks.length)];
+
+		if (!currentMasks.length) {
+			game.showPage('score');
+		}
+
+		var i = currentMasks.indexOf(currentMask);
+		if(i != -1) {
+			currentMasks.splice(i, 1);
+		}
+
+		$('.mask img').attr('src',currentMask);
+	}
+
 
 	function showCapturePreview(source) {
 		$(".capturedImage img").attr('src', source).css({
@@ -109,7 +132,8 @@ $(function() {
 
 	function startCountdown(time, redirect) {
 		$('.show-time').html(time);
-		var interval = setInterval(function() {
+		clearInterval(interval);
+		interval = setInterval(function() {
 			$('.show-time').html(--time);
 
 			if(time == 0) {
